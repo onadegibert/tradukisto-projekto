@@ -6,6 +6,7 @@ services:
       context: .
     expose:
       - 8501
+    restart: always
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.fastapi.rule=Host(`app.traduka.eu`)"
@@ -13,6 +14,7 @@ services:
       - "traefik.http.routers.fastapi.tls.certresolver=letsencrypt"
   traefik:
     image: traefik:v2.2
+    restart: always
     ports:
       - "80:80"
       - "443:443"
